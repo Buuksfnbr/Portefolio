@@ -90,7 +90,7 @@
             font-family: 'Rajdhani', sans-serif;
             font-size: 42px;
             font-weight: 800;
-            color: var(--g); /* Pseudo en jaune */
+            color: var(--g);
             line-height: 1;
             letter-spacing: 1px;
         }
@@ -101,20 +101,21 @@
             margin-top: 6px;
             margin-bottom: 8px;
         }
-	.profile-texts {
-    	    display: flex;
-    	    flex-direction: column;
-    	    flex-grow: 1; /* Permet au bloc de prendre tout l'espace disponible */
-}
+
+        .profile-texts {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
 
         /* Liens de contact sous la description */
         .header-contacts {
-   	    display: flex;
-    	    gap: 12px;
-    	    flex-wrap: wrap;
-    	    margin-left: auto; /* Pousse les réseaux tout à droite de la ligne */
-    	    margin-top: 10px;
-}
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-top: 10px;
+        }
 
         .header-link {
             display: inline-flex;
@@ -164,25 +165,13 @@
             gap: 2rem;
         }
 
-        /* Grille du haut (Fiche + Vidéos côte à côte) */
-        .top-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .top-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
         /* Blocs internes */
         .dash-card {
             background: var(--pan);
             border: 2px solid var(--bord2);
             border-radius: 14px;
             padding: 1.5rem;
+            width: 100%;
         }
 
         .card-title {
@@ -200,6 +189,19 @@
         .card-title i {
             color: var(--p);
             font-size: 20px;
+        }
+
+        /* Dispositions internes */
+        .player-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .player-profile-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         /* Liste d'infos */
@@ -253,25 +255,6 @@
             background: rgba(248, 113, 113, 0.35);
         }
 
-        /* Zone Vidéos TikTok */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--bord2);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
         /* Tableau des performances */
         .perf-table {
             width: 100%;
@@ -300,15 +283,26 @@
             text-align: right;
             font-size: 16px;
         }
+
+        /* Grille des vidéos */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 600px) {
+            .videos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="portfolio-container">
     
-    <!-- EN-TÊTE : Profil & Réseaux rapatries -->
     <!-- EN-TÊTE : Profil & Réseaux rapatriés -->
- <!-- EN-TÊTE : Profil, Réseaux & Captures à droite -->
     <header class="profile-header">
         <div class="profile-info">
             <div class="profile-avatar">⚡</div>
@@ -316,7 +310,6 @@
                 <h1>Buuks</h1>
                 <p>Joueur compétitif Fortnite à la recherche d'une structure</p>
                 
-                <!-- Boutons de contact placés naturellement dessous -->
                 <div class="header-contacts">
                     <a href="https://www.twitch.tv/buuksfnbr" target="_blank" class="header-link">
                         <i class="ti ti-brand-twitch"></i> Twitch
@@ -328,9 +321,7 @@
             </div>
         </div>
         
-        <!-- Colonne de droite : Les deux captures empilées l'une sous l'autre -->
         <div style="display: flex; flex-direction: column; gap: 10px; max-width: 180px; width: 100%;">
-            <!-- 1. En haut : La bulle jaune du classement -->
             <div class="header-screenshot">
                 <img src="Classement.png" alt="Classement">
             </div>
@@ -338,72 +329,45 @@
     </header>
 
     <!-- ZONE DE CONTENU PRINCIPALE -->
-<div class="main-content">
-    
-    <!-- SECTION DU HAUT : Fiche + Discord à gauche / Vidéos à droite -->
-    <div class="top-grid" style="align-items: start;">
+    <div class="main-content">
         
-        <!-- COLONNE DE GAUCHE : Fiche + Widget Discord -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- RECTANGLE 1 : PROFIL JOUEUR (Fiche + Discord) -->
+        <div class="dash-card">
+            <div class="card-title"><i class="ti ti-user"></i> Profil Joueur</div>
             
-            <!-- Fiche Joueur -->
-            <div class="dash-card">
-                <div class="card-title"><i class="ti ti-user"></i> Fiche Joueur</div>
-                <ul class="info-list">
-                    <li><span>Âge</span><span>16 ans</span></li>
-                    <li><span>Rôle</span><span>Fragger / Support</span></li>
-                    <li><span>Serveur</span><span>EU (Paris/Francfort)</span></li>
-                    <li><span>Plateforme</span><span>PC (Clavier / Souris)</span></li>
-                </ul>
-                <a href="https://fortnitetracker.com/profile/all/V1%20Bu%C3%BAksrr%C7%83/events" target="_blank" class="action-btn">
-                    <i class="ti ti-chart-bar"></i> Voir le Tracker Officiel
-                </a>
-            </div>
+            <div class="player-profile-grid">
+                <!-- Sous-bloc Fiche -->
+                <div>
+                    <ul class="info-list">
+                        <li><span>Âge</span><span>16 ans</span></li>
+                        <li><span>Rôle</span><span>Fragger / Support</span></li>
+                        <li><span>Serveur</span><span>EU (Paris/Francfort)</span></li>
+                        <li><span>Plateforme</span><span>PC (Clavier / Souris)</span></li>
+                    </ul>
+                    <a href="https://fortnitetracker.com/profile/all/V1%20Bu%C3%BAksrr%C7%83/events" target="_blank" class="action-btn">
+                        <i class="ti ti-chart-bar"></i> Voir le Tracker Officiel
+                    </a>
+                </div>
 
-            <!-- Widget Discord pour combler le vide -->
-            <div class="dash-card">
-                <div class="card-title"><i class="ti ti-brand-discord"></i> Mon Discord</div>
-                <div style="margin-top: 0.8rem;">
-                    <!-- Remplace TON_ID_SERVEUR_DISCORD si tu veux ton serveur -->
+                <!-- Sous-bloc Discord -->
+                <div>
+                    <div style="font-size: 13px; color: var(--mu); margin-bottom: 8px; font-weight: 600;">
+                        <i class="ti ti-brand-discord"></i> Discord Officiel
+                    </div>
                     <iframe 
                         src="https://discord.com/widget?id=TON_ID_SERVEUR_DISCORD&theme=dark" 
                         width="100%" 
-                        height="220" 
+                        height="180" 
                         allowtransparency="true" 
                         frameborder="0" 
-                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                        style="border-radius: 8px; border: 1px solid var(--bord2);">
                     </iframe>
                 </div>
             </div>
-
         </div>
 
-        <!-- COLONNE DE DROITE : Carte Vidéos Gameplay -->
-        <div class="dash-card" style="display: flex; flex-direction: column; gap: 1rem;">
-            <div class="card-title"><i class="ti ti-player-play"></i> Vidéos Gameplay / Proof</div>
-            
-            <!-- Grille pour les 2 vidéos horizontales côte à côte -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <!-- Vidéo 1 (Horizontale) -->
-                <video controls style="width: 100%; border-radius: 8px; border: 1px solid var(--bord2);">
-                    <source src="clip1.mp4" type="video/mp4">
-                </video>
-
-                <!-- Vidéo 3 (Horizontale) -->
-                <video controls style="width: 100%; border-radius: 8px; border: 1px solid var(--bord2);">
-                    <source src="clip3.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <!-- Vidéo 2 (Verticale / Format TikTok) -->
-            <video controls style="width: 100%; max-height: 380px; border-radius: 8px; border: 1px solid var(--bord2); object-fit: contain; background: #000;">
-                <source src="clip2.mp4" type="video/mp4">
-            </video>
-        </div>
-
-    </div>
-
-        <!-- SECTION DU BAS : Tableau et grande capture en pleine largeur -->
+        <!-- RECTANGLE 2 : TABLEAU DE STATS & PREUVES -->
         <div class="dash-card">
             <div class="card-title"><i class="ti ti-trophy"></i> Historique des Tournois</div>
             
@@ -426,8 +390,29 @@
                 <p style="color: var(--mu); font-size: 12px; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
                     <i class="ti ti-photo" style="vertical-align: middle;"></i> Preuve officielle (Fortnite Tracker)
                 </p>
-                <!-- Ajustez le nom de fichier ici pour votre capture du tableau complet -->
                 <img src="tableau.png" alt="tableau" style="width: 100%; border-radius: 10px; border: 2px solid var(--bord2);">
+            </div>
+        </div>
+
+        <!-- RECTANGLE 3 : VIDÉOS -->
+        <div class="dash-card">
+            <div class="card-title"><i class="ti ti-player-play"></i> Vidéos Gameplay / Proof</div>
+            
+            <div class="videos-grid">
+                <!-- Vidéo 1 -->
+                <video controls style="width: 100%; height: 260px; border-radius: 8px; border: 1px solid var(--bord2); object-fit: cover; background: #000;">
+                    <source src="clip1.mp4" type="video/mp4">
+                </video>
+
+                <!-- Vidéo 2 (Format TikTok/Vertical) -->
+                <video controls style="width: 100%; height: 260px; border-radius: 8px; border: 1px solid var(--bord2); object-fit: contain; background: #000;">
+                    <source src="clip2.mp4" type="video/mp4">
+                </video>
+
+                <!-- Vidéo 3 -->
+                <video controls style="width: 100%; height: 260px; border-radius: 8px; border: 1px solid var(--bord2); object-fit: cover; background: #000;">
+                    <source src="clip3.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
 
