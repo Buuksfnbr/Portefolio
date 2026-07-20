@@ -358,16 +358,22 @@
             </div>
 
             <!-- Vidéos Gameplay -->
-            <div class="dash-card" style="display: flex; flex-direction: column; gap: 0.8rem;">
-                <div class="card-title"><i class="ti ti-player-play"></i> Vidéos Gameplay / Proof</div>
-                
-                <div class="video-container">
-                    <iframe src="https://www.tiktok.com/embed/7653197209076370710" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="video-container">
-                    <iframe src="https://www.tiktok.com/embed/7662819218563370262" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
+            <!-- Vidéos Gameplay avec clips MP4 (Sans défilement externe) -->
+<div class="dash-card" style="display: flex; flex-direction: column; gap: 1rem;">
+    <div class="card-title"><i class="ti ti-player-play"></i> Vidéos Gameplay / Proof</div>
+    
+    <!-- Premier Clip -->
+    <video controls style="width: 100%; border-radius: 8px; border: 1px solid var(--bord2);">
+        <source src="clip1.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de vidéo.
+    </video>
+
+    <!-- Deuxième Clip -->
+    <video controls style="width: 100%; border-radius: 8px; border: 1px solid var(--bord2);">
+        <source src="clip2.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de vidéo.
+    </video>
+</div>
             
         </div>
 
