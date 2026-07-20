@@ -230,7 +230,7 @@
             font-weight: 700;
         }
 
-        /* Bouton Tracker */
+        /* Bouton Tracker & YouTube */
         .action-btn {
             display: flex;
             align-items: center;
@@ -253,6 +253,36 @@
 
         .action-btn:hover {
             background: rgba(248, 113, 113, 0.35);
+        }
+
+        .yt-btn {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+
+        .yt-btn:hover {
+            background: rgba(239, 68, 68, 0.35);
+        }
+
+        /* Container iframe responsive */
+        .yt-responsive {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--bord2);
+        }
+
+        .yt-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Tableau des performances */
@@ -317,6 +347,9 @@
                     <a href="https://www.instagram.com/buuksfnbr" target="_blank" class="header-link">
                         <i class="ti ti-brand-instagram"></i> Instagram
                     </a>
+                    <a href="https://www.youtube.com/@TON_CANAL" target="_blank" class="header-link">
+                        <i class="ti ti-brand-youtube"></i> YouTube
+                    </a>
                 </div>
             </div>
         </div>
@@ -331,7 +364,7 @@
     <!-- ZONE DE CONTENU PRINCIPALE -->
     <div class="main-content">
         
-        <!-- RECTANGLE 1 : PROFIL JOUEUR (Fiche + Discord) -->
+        <!-- RECTANGLE 1 : PROFIL JOUEUR (Fiche + Chaîne / Vidéo YouTube) -->
         <div class="dash-card">
             <div class="card-title"><i class="ti ti-user"></i> Profil Joueur</div>
             
@@ -349,20 +382,25 @@
                     </a>
                 </div>
 
-                <!-- Sous-bloc Discord -->
+                <!-- Sous-bloc YouTube (Vidéo à la une + bouton) -->
                 <div>
                     <div style="font-size: 13px; color: var(--mu); margin-bottom: 8px; font-weight: 600;">
-                        <i class="ti ti-brand-discord"></i> Discord Officiel
+                        <i class="ti ti-brand-youtube" style="color: #ef4444;"></i> Chaîne YouTube
                     </div>
-                    <iframe 
-                        src="https://discord.com/widget?id=TON_ID_SERVEUR_DISCORD&theme=dark" 
-                        width="100%" 
-                        height="180" 
-                        allowtransparency="true" 
-                        frameborder="0" 
-                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                        style="border-radius: 8px; border: 1px solid var(--bord2);">
-                    </iframe>
+                    
+                    <!-- Intégration d'une vidéo YouTube (Remplace l'ID de la vidéo par la tienne) -->
+                    <div class="yt-responsive">
+                        <iframe 
+                            src="https://www.youtube.com/watch?v=1YK0L6EI1r0" 
+                            title="My Highlights" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <a href="https://www.youtube.com/@BuuksFnbr" target="_blank" class="action-btn yt-btn">
+                        <i class="ti ti-brand-youtube"></i> S'abonner à la chaîne
+                    </a>
                 </div>
             </div>
         </div>
